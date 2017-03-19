@@ -7,7 +7,7 @@ console.assert(sumOfArray([10, 9, 8]) === 27)
 
 function sumOfArray (arr1) {
   var sum = 0
-  for (i = 0; i < arr1.length; i++) {
+  for (var i = 0; i < arr1.length; i++) {
     sum += arr1[i]
   }
   return sum
@@ -16,20 +16,20 @@ function sumOfArray (arr1) {
 // // PART 1
 //
 // // Write a function maxOfArray() that takes an array of numbers as an argument and finds the highest number.
-console.assert(maxOfArray([2,4,3]) === 4)
-console.assert(maxOfArray([10,9,8,100,7,6]) === 100)
-console.assert(isNaN(maxOfArray([1,2,'bucklemyshoe'])))
+console.assert(maxOfArray([2, 4, 3]) === 4)
+console.assert(maxOfArray([10, 9, 8, 100, 7, 6]) === 100)
+console.assert(isNaN(maxOfArray([1, 2, 'bucklemyshoe'])))
 
 function maxOfArray (arr1) {
-    var max = 0
-    for (i = 0; i < arr1.length; i++) {
-      if (isNaN(arr1[i])) {
-        max = 'Array needs to be all numbers'
-      } else if (arr1[i] > max) {
-          max = arr1[i]
-      }
+  var max = 0
+  for (var i = 0; i < arr1.length; i++) {
+    if (isNaN(arr1[i])) {
+      return NaN
+    } else if (arr1[i] > max) {
+      max = arr1[i]
     }
-    return max
+  }
+  return max
 }
 // /**
 // PART 2 *
@@ -43,12 +43,8 @@ console.assert(isVowel('a') === true)
 console.assert(isVowel('E') === true)
 
 function isVowel (letterInput) {
-  var isVowel = false
-  if (letterInput === 'A' || letterInput === 'a' || letterInput === 'E' || letterInput === 'e' || letterInput === 'I' ||
-  letterInput === 'i' || letterInput === 'O' || letterInput === 'o' || letterInput === 'U' || letterInput === 'u') {
-    isVowel = true
-  }
-  return isVowel
+  letterInput = (letterInput + '').toLowerCase()
+  return 'aeiou'.search(letterInput) !== -1
 }
 //
 // /**
@@ -63,7 +59,7 @@ console.assert(reverse("we don't want no trouble") === "elbuort on tnaw t'nod ew
 
 function reverse (strInput) {
   var newArr = []
-  for (i = strInput.length - 1; i >= 0; i--) {
+  for (var i = strInput.length - 1; i >= 0; i--) {
     newArr.push(strInput[i])
   }
   return (newArr.join(''))
@@ -84,7 +80,7 @@ console.assert(fizzbuzz(10) === '..fizz.buzzfizz..fizzbuzz')
 
 function fizzbuzz (inputNum) {
   var outputStr = ''
-  for (i = 1; i <= inputNum; i++) {
+  for (var i = 1; i <= inputNum; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
       outputStr += 'fizzbuzz'
     } else if (i % 3 === 0 && i % 5 !== 0) {
@@ -107,16 +103,16 @@ console.assert(findLongestWord('a book full of dogs') === 'book')
 console.assert(findLongestWord("don't mess with Texas") === 'Texas')
 
 function findLongestWord (inputStr) {
-   var replaced = inputStr.replace(/[^A-Za-z\s]/g,"");
-   var newArr = replaced.split(' ')
-   var result = newArr[0]
+  var replaced = inputStr.replace(/[^A-Za-z\s]/g, '')
+  var newArr = replaced.split(' ')
+  var result = newArr[0]
 
-   for (i = 1; i < newArr.length; i++) {
-     if (newArr[i].length > result.length) {
-       result = newArr[i]
-     }
-   }
-   return result
+  for (var i = 1; i < newArr.length; i++) {
+    if (newArr[i].length > result.length) {
+      result = newArr[i]
+    }
+  }
+  return result
 }
 
 //
