@@ -2,11 +2,10 @@
 // PART 0
 // Write a function called squareDance() that squares each number in an array.
 
-// TODO: Put your function here
 function squareDance (arr) {
   var squaredArr = []
   for (var i = 0; i < arr.length; i++) {
-    squaredArr.push(arr[i] * arr[i])
+    squaredArr.push(Math.pow(arr[i], 2))
   }
   return squaredArr
 }
@@ -19,17 +18,17 @@ console.assert(squareDance([3, 6, 9, 3])[0] === 9)
 // PART 1
 // Write a function called nicer(). It should clean up the language in its input sentence.
 
-// TODO: put your function here
-
 function nicer (inputStr) {
   var strArr = inputStr.split(' ')
-  var outputArr = []
+  var badWords = ['heck', 'crappy', 'dang', 'darn']
   for (var i = 0; i < strArr.length; i++) {
-    if (strArr[i] !== 'heck' && strArr[i] !== 'crappy' && strArr[i] !== 'dang' && strArr[i] !== 'darn') {
-      outputArr.push(strArr[i])
+    for (var j = 0; j < badWords.length; j++) {
+      if (strArr[i] === badWords[j]) {
+        strArr.splice(i, 1)
+      }
     }
   }
-  return outputArr.join(' ')
+  return strArr.join(' ')
 }
 console.assert(nicer('mom get the heck in here and bring me a darn sandwich.') === 'mom get the in here and bring me a sandwich.')
 console.assert(nicer('here son, your crappy sandwich is on the dang plate.') === 'here son, your sandwich is on the plate.')
@@ -38,8 +37,6 @@ console.assert(nicer('here son, your crappy sandwich is on the dang plate.') ===
 // PART 2
 // Write a function called capitalizeAll(). It should take as input a sentence
 // and capitalize the first letter of every word in the sentence.
-
-// TODO: put your function here
 
 function capitalizeAll (inputStr) {
   var strArr = inputStr.split(' ')
@@ -64,7 +61,6 @@ console.assert(capitalizeAll('every day is like sunday.') === 'Every Day Is Like
 var paragraph = 'it was a fine morning. the wine was good. light slanted in through the cafe window.'
 var paragraph2 = 'hello, it is me! are you here yet? the food is good.'
 
-// TODO: put your function here
 function properSentences (inputStr) {
   var upperCaseArr = []
   var charArr = inputStr.split('')
@@ -103,7 +99,6 @@ console.assert(iPutTheFunIn('reds') === 'refunds')
 // starting value, one after the other, and return a new value that has been processed
 // by both function (2) and function (3).
 
-// TODO: put your function here
 function pipeline (input, func1, func2) {
   return func2(func1(input))
 }
